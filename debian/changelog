@@ -1,0 +1,79 @@
+systune (0.5.3) frozen unstable; urgency=low
+
+  * Some minor changes in debian/packages
+  * Removed systune.kernel??.conf examples
+  * Files in /etc directory are no longer conffiles and are moved
+    to <doc>/examples directory.
+  * All options in /etc/systune.conf are commented, systune doesn't
+    reconfigure kernel on installation, closes: #47940.
+  * make clean works good
+  * The version number in main binaries are fixed now.
+  * yada 0.8
+
+ -- Piotr Roszatycki <dexter@debian.org>  Thu, 27 Jan 2000 19:20:49 +0100
+
+systune (0.5.2) unstable; urgency=low
+
+  * /usr/doc backward compatibility
+  * This is Debian native package, so version number wasn't legal 
+    (closes: #44170)
+
+ -- Piotr Roszatycki <dexter@debian.org>  Sun, 26 Sep 1999 11:41:19 +0200
+
+systune (0.5-1) unstable; urgency=low
+
+  * Fixed another bashism: echo -ne ..., thanks to Joel Klecker 
+    (closes: #42608)
+
+ -- Piotr Roszatycki <dexter@debian.org>  Mon,  9 Aug 1999 16:55:02 +0200
+
+systune (0.4-1) unstable; urgency=low
+
+  * Standards-Version: 3.0.1.0
+  * Included full copyright info
+
+ -- Piotr Roszatycki <dexter@debian.org>  Thu,  5 Aug 1999 23:58:31 +0200
+
+systune (0.3-3) unstable; urgency=low
+
+  * Escaped "update-rc\.d" in yada for lintian
+  * Included missed manpages
+
+ -- Piotr Roszatycki <dexter@debian.org>  Tue, 11 May 1999 23:25:26 +0200
+
+systune (0.3-2) unstable; urgency=low
+
+  * Fixed some typos
+  * yada technology
+
+ -- Piotr Roszatycki <dexter@debian.org>  Mon,  7 May 1999 01:56:03 +0200
+
+systune (0.3-1) unstable; urgency=low
+
+  * Included some examples
+  * Changed architecture (Any -> All)
+  * Changed description in control file
+  * Fixed init script
+  * Fixed dh_installinit
+  * Many fixes done by Oliver Elphick <Oliver.Elphick@lfix.co.uk>
+  * Included more detailed information about copyright
+  * Rewritten manual pages
+  * Fixed systunedump and systune (a few misspelings)
+
+ -- Piotr Roszatycki <dexter@debian.org>  Mon, 26 Apr 1999 22:22:38 +0200
+
+systune (0.2-1) unstable; urgency=low
+
+  * Included man pages
+  * Rebuilt systune and systunedump script
+  * debhelper technology
+  * New standard: 2.5.0.0
+  * New maintainer
+
+ -- Piotr Roszatycki <dexter@debian.org>  Sat, 17 Apr 1999 08:05:36 +0200
+
+systune (0.1-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Daniel Podlejski <underley@zakopane.top.pl>  Tue,  8 Dec 1998 12:00:18 +0100

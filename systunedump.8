@@ -1,0 +1,80 @@
+.\" Manual 1999 by Piotr Roszatycki
+.\" Hey Emacs! This file is -*- nroff -*- source.
+.TH SYSTUNEDUMP 8 "20 Apr 1999" "Debian Project" "Debian GNU/Linux"
+
+.SH NAME
+systunedump \- Dumps /proc files for kernel tuning.
+
+.SH SYNOPSIS
+.B systunedump
+[
+.BI \-c, \-\-config " configfile
+] [
+.BI "\-h, \-\-help"
+] [
+.BI "-p, \-\-path " dumppath
+] [
+.BI "-v, \-\-verbose"
+]
+
+.SH DESCRIPTION
+This program dumps elements of the /proc filesystem to standard output
+in a format which, if redirected to a file, can be used by the 
+.B systune(8)
+utility.
+
+Common usage:
+
+.BI "systunedump > " /etc/systune.conf
+
+.BI "systunedump \-\-config " /etc/systune.kernel20.dump " > "
+.BI "/etc/systune.kernel20.conf"
+
+.BI "systunedump \-\-config " /dev/null " \-\-path " /proc/sys/vm " > "
+.BI "/etc/systune.conf"
+
+
+.SH OPTIONS
+.TP
+.BI "\-c, \-\-config " configfile
+Specify an alternative configuration file.  The default is
+.I /etc/systune.dump
+.
+.TP
+.BI "\-h, \-\-help"
+Print a short explanation of the command syntax.
+.TP
+.BI "\-p, \-\-path " dumppath
+Add the specified path to any items already listed in the configuration
+file.  Items in the path must be separated by whitespace.  All items in the
+path must begin 
+.BR /proc/sys/ .
+.TP
+.BI "\-v, \-\-verbose"
+Verbose mode: allow non-existent items in the path and configuration file
+to produce errors to standard error.  Without this option, erroneous paths
+are discarded silently.
+
+.SH FILES
+.TP 
+.I /etc/systune.dump
+A file containing a list of paths to dump.  Each pathname must begin with
+.BR /proc/sys/ .
+Comments, introduced by #, can be included; the whole line from the comment
+character onwards is discarded, together with any whitespace immediately
+preceding it. 
+.PP
+The configuration file can be a file, such as
+.IR /etc/systune.conf ,
+that contains previously dumped data; the definition part of each line, after
+and including the colon, is discarded.
+
+.SH SEE ALSO
+.B systune (8).
+
+.SH AUTHOR
+Piotr Roszatycki <dexter@debian.org>.
+
+.SH THANKS
+Daniel Podlejski,
+Oliver Elphick.

@@ -1,0 +1,117 @@
+Source: systune
+Section: admin
+Priority: optional
+Maintainer: Piotr Roszatycki <dexter@debian.org>
+Standards-Version: 3.0.1
+Packaged-For: Debian
+Description: Kernel tuning through the /proc filesystem.
+Major-Changes:
+ [systune.init.dpatch] init.d script for Debian
+Copyright: GPL
+ Copyright (C) 1998 Daniel Podlejski <underley@zakopane.top.pl>
+           (C) 1999 Piotr Roszatycki <dexter@debian.org>
+ .
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; version 2 dated June, 1991.
+ .
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+ .
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+    02111-1307, USA.
+Patches: *.dpatch
+Build: sh
+ make
+Clean: sh
+ make clean
+
+Package: systune
+Architecture: all
+Description: Kernel tuning through the /proc filesystem.
+ This program writes kernel parameters, previously saved in a configuration
+ file, to the /proc filesystem.  This enables kernel performance to be
+ adjusted without recompiling the kernel.
+Install: sh
+ yada install -script -into /usr/sbin systune
+ yada install -script -into /usr/sbin systunedump
+ yada install -script -into /etc/init.d -as systune debian/systune.init
+ yada install -doc -subdir examples systune.conf
+ yada install -doc -subdir examples systune.dump
+ yada install -doc -subdir examples systune.router.conf
+ yada install -doc -subdir examples systune.www.conf
+ yada install -man systune.8
+ yada install -man systunedump.8
+ dh_link -P$ROOT /usr/share/doc/$PACKAGE/changelog.gz /usr/share/doc/$PACKAGE/changelog.Debian.gz
+Finalise: sh
+ cat $CONTROL/postinst \
+     | awk '{ if( $1 == "#systune.conf#" ) system("cat systune.conf"); else print }' \
+     | awk '{ if( $1 == "#systune.dump#" ) system("cat systune.dump"); else print }' \
+     > $CONTROL/postinst.tmp
+ mv -f $CONTROL/postinst.tmp $CONTROL/postinst
+ chmod 755 $CONTROL/postinst
+ dh_md5sums -P$ROOT
+Postinst: sh
+ systune_conf () {
+     cat << EOT
+ #systune.conf#
+ EOT
+ }
+ .
+ systune_dump () {
+     cat << EOT
+ #systune.dump#
+ EOT
+ }
+ .
+ PACKAGE=systune
+ if [ "$1" = "configure" ]; then
+     if [ -d /usr/doc -a ! -e /usr/doc/$PACKAGE -a -d /usr/share/doc/$PACKAGE ]; then
+         ln -sf ../share/doc/$PACKAGE /usr/doc/$PACKAGE
+     fi
+ fi
+ .
+ case "$1" in
+     configure)
+ 	 if [ ! -f /etc/systune.conf ]; then
+ 	     systune_conf | sed 's!^/!# /!' > /etc/systune.conf
+ 	 fi
+ 	 if [ ! -f /etc/systune.dump ]; then
+ 	     systune_dump | sed 's!^/!# /!' > /etc/systune.dump
+ 	 fi
+     	 if command -v update-rc\.d >/dev/null 2>&1; then
+             update-rc.d systune start 50 2 3 4 5 . >/dev/null
+             /etc/init.d/systune start
+         fi
+         ;;
+     abort-upgrade|abort-remove|abort-deconfigure)
+         /etc/init.d/systune start
+         ;;
+ esac
+Prerm: sh
+ PACKAGE=systune
+ if [ \( "$1" = "upgrade" -o "$1" = "remove" \) -a -L /usr/doc/$PACKAGE ]; then
+     rm -f /usr/doc/$PACKAGE
+ fi
+ .
+ case "$1" in
+     remove|deconfigure|upgrade|remove-in-favour|deconfigure-in-favour)
+         if test -x /etc/init.d/systune; then
+             /etc/init.d/systune stop
+         fi
+         ;;
+ esac
+Postrm: sh
+ case "$1" in
+     purge)
+         if command -v update-rc\.d >/dev/null 2>&1; then
+             update-rc.d systune remove >/dev/null
+         fi
+ 	 test -f /etc/systune.conf && rm -f /etc/systune.conf
+ 	 test -f /etc/systune.dump && rm -f /etc/systune.dump
+         ;;
+ esac

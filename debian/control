@@ -1,0 +1,12 @@
+Source: systune
+Maintainer: Piotr Roszatycki <dexter@debian.org>
+Section: admin
+Priority: optional
+Standards-Version: 3.0.1
+
+Package: systune
+Architecture: all
+Description: Kernel tuning through the /proc filesystem.
+ This program writes kernel parameters, previously saved in a configuration
+ file, to the /proc filesystem.  This enables kernel performance to be
+ adjusted without recompiling the kernel.
