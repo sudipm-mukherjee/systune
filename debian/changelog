@@ -1,3 +1,11 @@
+systune (0.5.4) frozen unstable; urgency=low
+
+  * Clean up the source package
+  * More examples in default systune.conf
+  * More clear package description, closes: #133979
+
+ -- Piotr Roszatycki <dexter@debian.org>  Thu, 11 Apr 2002 12:55:56 +0200
+
 systune (0.5.3) frozen unstable; urgency=low
 
   * Some minor changes in debian/packages
