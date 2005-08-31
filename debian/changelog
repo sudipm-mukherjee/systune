@@ -1,3 +1,12 @@
+systune (0.5.5) unstable; urgency=low
+
+  * Rebuilt with the latest yada. Doesn't install /usr/doc symlink.
+  * New yada uses invoke-rc.d. Closes: #200635.
+  * Fixed typo in package description.
+  * Changed init script message. Closes: #164155.
+
+ -- Piotr Roszatycki <dexter@debian.org>  Wed, 31 Aug 2005 13:22:32 +0200
+
 systune (0.5.4) frozen unstable; urgency=low
 
   * Clean up the source package

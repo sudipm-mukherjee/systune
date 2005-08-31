@@ -1,10 +1,17 @@
+# $Id: /trunk/debian/dists/systune/debian/packages 233 2005-08-31T11:33:24.771740Z dexter  $
+
+# If the debian/rules or debian/control file is missing, rebuild the file:
+#
+#   $ yada rebuild control
+#   $ yada rebuild rules
+
+
 Source: systune
 Section: admin
 Priority: optional
 Maintainer: Piotr Roszatycki <dexter@debian.org>
-Standards-Version: 3.5.6
-Packaged-For: Debian
-Description: kernel tuning through the /proc filesystem
+Standards-Version: 3.6.2
+Description: kernel tuning through the /proc file system
 Copyright: GPL
  Copyright (C) 1998 Daniel Podlejski <underley@zakopane.top.pl>
            (C) 1999 Piotr Roszatycki <dexter@debian.org>
@@ -15,7 +22,7 @@ Clean: sh
 
 Package: systune
 Architecture: all
-Description: Kernel tuning through the /proc filesystem.
+Description: kernel tuning through the /proc file system
  This program writes kernel parameters, previously saved in a configuration
  file, to the /proc filesystem.  This enables kernel performance to be
  adjusted without recompiling the kernel.
@@ -29,7 +36,6 @@ Install: sh
  yada install -doc -subdir examples systune.dump
  yada install -man systune.8
  yada install -man systunedump.8
- ln -s changelog.gz $ROOT/usr/share/doc/$PACKAGE/changelog.Debian.gz
 Finalise: sh
  cat $CONTROL/postinst \
      | awk '{ if( $1 == "#systune.conf#" ) system("cat systune.conf"); else print }' \
@@ -80,16 +86,13 @@ Init: sh
  .
  case "$1" in
    start)
- 	echo -n "Starting $DESC: "
- 	$PROGRAM
- 	echo "$NAME."
+ 	echo -n "Configuring kernel parameters..."
+ 	echo " done"
  	;;
    stop)
       ;;
    reload|restart|force-reload)
- 	echo -n "Restarting $DESC: "
- 	$PROGRAM
- 	echo "$NAME."
+        $0 start
  	;;
    *)
  	N=/etc/init.d/$NAME
