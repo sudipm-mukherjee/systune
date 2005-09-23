@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 # Generated automatically from debian/packages
-# by yada v0.42, of Mon, 22 Aug 2005
+# by yada v0.44, of Tue, 13 Sep 2005
 
 DEB_HOST_ARCH        := $(shell dpkg-architecture -qDEB_HOST_ARCH 2>/dev/null)
 DEB_HOST_ARCH_OS     := $(shell dpkg-architecture -qDEB_HOST_ARCH_OS 2>/dev/null)
@@ -50,7 +50,8 @@ ifeq ($(DEB_BUILD_ARCH_OS),)
   endif
 endif
 
-VERSION:=$(shell head -n1 debian/changelog | sed 's/^[^(][^(]*(([^)][^)]*)).*//')
+LEFT_PARENTHESIS:=(
+VERSION:=$(shell head -n1 debian/changelog | sed -e "s/^[0-9a-zA-Z.-]* $(LEFT_PARENTHESIS)//" -e "s/[^0-9a-zA-Z.:+~-].*//")
 
 SHELL=/bin/bash
 

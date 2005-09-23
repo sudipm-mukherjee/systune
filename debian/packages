@@ -1,4 +1,4 @@
-# $Id: /trunk/debian/dists/systune/debian/packages 233 2005-08-31T11:33:24.771740Z dexter  $
+# $Id: /trunk/debian/dists/systune/debian/packages 265 2005-09-23T14:12:34.829745Z dexter  $
 
 # If the debian/rules or debian/control file is missing, rebuild the file:
 #
@@ -87,6 +87,7 @@ Init: sh
  case "$1" in
    start)
  	echo -n "Configuring kernel parameters..."
+ 	$PROGRAM
  	echo " done"
  	;;
    stop)

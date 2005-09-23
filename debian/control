@@ -3,8 +3,8 @@ Maintainer: Piotr Roszatycki <dexter@debian.org>
 Section: admin
 Priority: optional
 Standards-Version: 3.6.2
-Build-Depends: yada (>= 0.42)
-Build-Depends-Indep: yada (>= 0.42)
+Build-Depends: yada (>= 0.44)
+Build-Depends-Indep: yada (>= 0.44)
 
 Package: systune
 Architecture: all
