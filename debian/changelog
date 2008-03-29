@@ -1,3 +1,10 @@
+systune (0.5.6-0.1) unstable; urgency=low
+
+  * Non-maintainer upload to solve release goal.
+  * Add LSB dependency header to init.d scripts (Closes: #466651).
+
+ -- Petter Reinholdtsen <pere@debian.org>  Sat, 29 Mar 2008 17:05:46 +0100
+
 systune (0.5.6) unstable; urgency=medium
 
   * Start the systune script in init script. Closes: #328683.

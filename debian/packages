@@ -75,6 +75,13 @@ Postrm: sh
  esac
 Init: sh
  start 50 2 3 4 5 .
+ ### BEGIN INIT INFO
+ # Provides:          systune
+ # Required-Start:    $remote_fs $syslog
+ # Required-Stop:
+ # Default-Start:     2 3 4 5
+ # Default-Stop:
+ ### END INIT INFO
  .
  PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
  PROGRAM=/usr/sbin/systune
