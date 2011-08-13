@@ -1,3 +1,12 @@
+systune (0.5.7) unstable; urgency=low
+
+  * QA upload.
+  * debian/control: Set maintainer to Debian QA Group.
+  * Replace yada with debhelper. (Closes: #636894)
+  * debian/copyright: Add copyright file from previous generated package.
+
+ -- Tim Retout <diocles@debian.org>  Sat, 13 Aug 2011 22:46:34 +0100
+
 systune (0.5.6-0.1) unstable; urgency=low
 
   * Non-maintainer upload to solve release goal.

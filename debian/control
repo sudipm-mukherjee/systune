@@ -1,12 +1,13 @@
 Source: systune
-Maintainer: Piotr Roszatycki <dexter@debian.org>
+Maintainer: Debian QA Group <packages@qa.debian.org>
 Section: admin
 Priority: optional
-Standards-Version: 3.6.2
-Build-Depends: yada (>= 0.54)
+Standards-Version: 3.9.2
+Build-Depends: debhelper (>= 8)
 
 Package: systune
 Architecture: all
+Depends: ${misc:Depends}
 Description: kernel tuning through the /proc file system
  This program writes kernel parameters, previously saved in a configuration
  file, to the /proc filesystem.  This enables kernel performance to be
