@@ -15,9 +15,9 @@ build-stamp:
 install: install-stamp
 
 install-stamp:
-	install -m 0755 -d $(ROOT)/usr/sbin/
-	install -m 0755 systune $(ROOT)/usr/sbin/
-	install -m 0755 systunedump $(ROOT)/usr/sbin/
-	install -m 0755 -d $(ROOT)/etc/
-	install -m 0644 systune.conf $(ROOT)/etc/
-	install -m 0644 systune.dump $(ROOT)/etc/
+	install -m 0755 -d $(DESTDIR)/usr/sbin/
+	install -m 0755 systune $(DESTDIR)/usr/sbin/
+	install -m 0755 systunedump $(DESTDIR)/usr/sbin/
+	install -m 0755 -d $(DESTDIR)/etc/
+	install -m 0644 systune.conf $(DESTDIR)/etc/
+	install -m 0644 systune.dump $(DESTDIR)/etc/
