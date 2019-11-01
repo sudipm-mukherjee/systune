@@ -1,13 +1,17 @@
 Source: systune
-Maintainer: Debian QA Group <packages@qa.debian.org>
+Maintainer: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
 Section: admin
 Priority: optional
-Standards-Version: 3.9.2
-Build-Depends: debhelper (>= 8)
+Standards-Version: 4.4.1
+Rules-Requires-Root: no
+Build-Depends: debhelper-compat (= 12)
+Vcs-Git: https://github.com/sudipm-mukherjee/systune.git
+Vcs-Browser: https://github.com/sudipm-mukherjee/systune.git
 
 Package: systune
 Architecture: all
-Depends: ${misc:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends}, lsb-base
 Description: kernel tuning through the /proc file system
  This program writes kernel parameters, previously saved in a configuration
  file, to the /proc filesystem.  This enables kernel performance to be

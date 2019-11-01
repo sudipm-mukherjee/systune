@@ -1,3 +1,17 @@
+systune (0.5.9) unstable; urgency=low
+
+  * Update Standards-Version
+  * Update compat level to 12
+  * Update maintainer in debian/control
+  * Update copyright file
+  * Added link to github as Vcs-Git
+  * Source format added
+  * Fix lintian issue of init.d-script-does-not-source-init-functions
+  * Fix lintian issue of skip-systemd-native-flag-missing-pre-depends
+  * Fix lintian issue of lsb-base
+
+ -- Sudip Mukherjee <sudipm.mukherjee@gmail.com>  Fri, 01 Nov 2019 19:31:32 +0000
+
 systune (0.5.8) unstable; urgency=low
 
   * use DESTDIR in Makefile accordig to GNU coding standard
@@ -62,14 +76,14 @@ systune (0.5.3) frozen unstable; urgency=low
 systune (0.5.2) unstable; urgency=low
 
   * /usr/doc backward compatibility
-  * This is Debian native package, so version number wasn't legal 
+  * This is Debian native package, so version number wasn't legal
     (closes: #44170)
 
  -- Piotr Roszatycki <dexter@debian.org>  Sun, 26 Sep 1999 11:41:19 +0200
 
 systune (0.5-1) unstable; urgency=low
 
-  * Fixed another bashism: echo -ne ..., thanks to Joel Klecker 
+  * Fixed another bashism: echo -ne ..., thanks to Joel Klecker
     (closes: #42608)
 
  -- Piotr Roszatycki <dexter@debian.org>  Mon,  9 Aug 1999 16:55:02 +0200
