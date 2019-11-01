@@ -3,6 +3,9 @@
 # /etc/init.d/systune
 # update-rc.d systune start 50 2 3 4 5 .
 
+[ -f /etc/default/rcS ] && . /etc/default/rcS
+. /lib/lsb/init-functions
+
 PACKAGE="systune"
 SOURCE="systune"
 
