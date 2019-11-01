@@ -1,0 +1,69 @@
+.\" Manual 1999 by Piotr Roszatycki
+.\" Hey Emacs! This file is -*- nroff -*- source.
+.TH SYSTUNE 8 "20 Apr 1999" "Debian Project" "Debian GNU/Linux"
+
+.SH NAME
+systune \- Kernel tuning through the /proc filesystem.
+
+.SH SYNOPSIS
+.B systune
+[
+.BI "\-c, \-\-config " configfile
+] [
+.BI "\-h, \-\-help"
+] [
+.BI "\-v, \-\-verbose"
+]
+
+.SH DESCRIPTION
+This program writes kernel parameters, previously saved in a configuration
+file, to the /proc filesystem.  This enables kernel performance to be
+adjusted without recompiling the kernel.
+
+.SH OPTIONS
+.TP
+.BI "\-c, \-\-config " configfile
+Specify an alternative config file.  The default is
+.I /etc/systune.conf
+.
+.TP
+.BI "\-h, \-\-help"
+Print a short explanation of syntax to standard output.
+.TP
+.BI "-v, \-\-verbose"
+Verbose mode: cause non-existent paths in the configuration to generate
+error output to standard error.  Without this option, erroneous paths are
+discarded silently.
+
+.SH CONFIGURATION FILE FORMAT
+Each definition takes a single line, in the form 
+.IR path : definition ,
+where 
+.IR path
+must begin with
+.BR /proc/sys/ .
+Paths beginning with any other sequence are silently ignored.
+.PP
+Comments are introduced by the character #.  The whole line from
+the # character onwards is discarded, together with any whitespace
+immediately preceding it.
+.PP
+Blank lines are ignored.
+
+.SH FILES
+.TP 
+.I /etc/systune.conf
+A file with saved kernel parameters. It is possible to generate this file
+with the
+.B systunedump (8)
+command.
+
+.SH SEE ALSO
+.BR systunedump (8).
+
+.SH AUTHOR
+Piotr Roszatycki <dexter@debian.org>.
+
+.SH THANKS
+Daniel Podlejski,
+Oliver Elphick.

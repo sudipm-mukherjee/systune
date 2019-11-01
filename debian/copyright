@@ -1,0 +1,10 @@
+This is a prepackaged version of kernel tuning through the /proc file
+system.  It was Debianised by Piotr Roszatycki <dexter@debian.org>.
+
+Copyright and licence notice:
+
+  Copyright (C) 1998 Daniel Podlejski <underley@zakopane.top.pl>
+            (C) 1999 Piotr Roszatycki <dexter@debian.org>
+
+On any Debian system, you can find the complete text of the GNU GPL
+(GNU General Public License) in the file  /usr/share/common-licenses/GPL

@@ -1,0 +1,44 @@
+#!/bin/sh
+#
+# /etc/init.d/systune
+# update-rc.d systune start 50 2 3 4 5 .
+
+PACKAGE="systune"
+SOURCE="systune"
+
+set -e
+### BEGIN INIT INFO
+# Provides:          systune
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:
+# Default-Start:     2 3 4 5
+# Default-Stop:
+### END INIT INFO
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+PROGRAM=/usr/sbin/systune
+NAME=systune
+DESC="tuning kernel"
+
+test -f $PROGRAM || exit 0
+set -e
+
+case "$1" in
+  start)
+	echo -n "Configuring kernel parameters..."
+	$PROGRAM
+	echo " done"
+	;;
+  stop)
+     ;;
+  reload|restart|force-reload)
+       $0 start
+	;;
+  *)
+	N=/etc/init.d/$NAME
+	echo "Usage: $N {start|stop|reload|restart|force-reload}" >&2
+	exit 1
+	;;
+esac
+
+exit 0
