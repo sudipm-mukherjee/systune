@@ -21,7 +21,7 @@
 help () {
 cat << EOT
 systunedump 0.5 - Kernel tuning utility
-Usage: $0 [-c|--config <configfile>] [-p|--path <dumppath>] [-h|--help]
+Usage: $0 [-c|--config <configfile>] [-p|--path <dumppath>] [-a|--all] [-h|--help]
 
 Parameters:
   -c|--config <configfile>    - alternative config file; 
@@ -29,6 +29,7 @@ Parameters:
   -h|--help                   - this help text
   -p|--path <dumppath>        - path to be included in the dump, in addition
 				to the items listed in <configfile>
+  -a|--all                    - dump all values
   
 EOT
 }
@@ -56,13 +57,25 @@ while [ $# -gt 0 ]; do
 	    VERBOSE="yes"
 	    shift
 	    ;;
+	--all|-a)
+	    ALL="yes"
+	    shift
+	    ;;
     esac
 done
 
-test -f $CONF || exit 0
+if [ ! -f $CONF ] && [ -z "$ALL" ]; then
+	echo "config file not found, use -a|--all option to dump all"
+	exit 0
+fi
 
-DUMP="$DUMP $(cat $CONF | sed 's/[ 	]*#.*$//' | sed 's/:.*//' )"
+
+if [ -z "ALL" ]; then
+	DUMP="$DUMP $(cat $CONF | sed 's/[ 	]*#.*$//' | sed 's/:.*//' )"
                                   #space+tab
+else
+	DUMP="/proc/sys/"
+fi
 
 for dump in $DUMP; do
 
