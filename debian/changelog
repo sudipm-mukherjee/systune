@@ -1,3 +1,9 @@
+systune (0.5.10) unstable; urgency=low
+
+  * Add error message to systunedump and option to dump all (Closes: #672283)
+
+ -- Sudip Mukherjee <sudipm.mukherjee@gmail.com>  Sun, 24 Nov 2019 17:58:39 +0000
+
 systune (0.5.9) unstable; urgency=low
 
   * Update Standards-Version
