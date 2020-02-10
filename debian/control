@@ -2,7 +2,7 @@ Source: systune
 Maintainer: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
 Section: admin
 Priority: optional
-Standards-Version: 4.4.1
+Standards-Version: 4.5.0
 Rules-Requires-Root: no
 Build-Depends: debhelper-compat (= 12)
 Vcs-Git: https://github.com/sudipm-mukherjee/systune.git
