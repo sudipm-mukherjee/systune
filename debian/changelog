@@ -1,8 +1,12 @@
-systune (0.5.13) UNRELEASED; urgency=medium
+systune (0.5.13) unstable; urgency=medium
 
+  [ Debian Janitor ]
   * Fix day-of-week for changelog entry 0.3-2.
 
- -- Debian Janitor <janitor@jelmer.uk>  Wed, 06 May 2020 22:06:39 +0000
+  [ Sudip Mukherjee ]
+  * Update compat level to 13.
+
+ -- Sudip Mukherjee <sudipm.mukherjee@gmail.com>  Wed, 20 May 2020 23:28:00 +0100
 
 systune (0.5.12) unstable; urgency=medium
 
